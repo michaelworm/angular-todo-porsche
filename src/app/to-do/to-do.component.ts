@@ -32,6 +32,10 @@ export class ToDoComponent {
     console.log(this.items);
   }
 
+  deleteTodo(deleteItem: ToDoItem) {
+    this.items = this.items.filter(item => item.name !== deleteItem.name);
+  }
+
   onUpdateCheckbox({ detail: updateItem }: CustomEvent<CheckboxUpdateEventDetail>) {
     this.checkItem(updateItem);
   }

@@ -11,6 +11,7 @@
 
   @for (item of items; track $index) {
     <p-checkbox [label]="item.name" [name]="item.name" [checked]="item.checked" (update)="onUpdateCheckbox($event)" />
+    <p-button [compact]="true" (click)="deleteTodo(item)">Delete</p-button>
     <p-divider />
   }
 </section>
