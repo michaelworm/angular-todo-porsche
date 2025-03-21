@@ -1,0 +1,13 @@
+.todo {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.add-todos {
+  display: flex;
+  gap: 0.5rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}

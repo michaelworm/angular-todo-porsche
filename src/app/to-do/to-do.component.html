@@ -1,0 +1,16 @@
+<section class="todo">
+  <p-heading size="large">Homework ToDos</p-heading>
+
+  <div class="add-todos">
+    <p-text-field-wrapper label="New ToDo">
+      <input [formControl]="newTodo" type="text" />
+    </p-text-field-wrapper>
+
+    <p-button (click)="onAddTodo()" class="button">Add</p-button>
+  </div>
+
+  @for (item of items; track $index) {
+    <p-checkbox [label]="item.name" [name]="item.name" [checked]="item.checked" (update)="onUpdateCheckbox($event)" />
+    <p-divider />
+  }
+</section>

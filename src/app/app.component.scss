@@ -1,0 +1,8 @@
+@use '@porsche-design-system/components-angular/styles' as *;
+
+.grid {
+  @include pds-grid();
+  .todo {
+    grid-column: $pds-grid-basic-column-start / $pds-grid-basic-column-end;
+  }
+}
