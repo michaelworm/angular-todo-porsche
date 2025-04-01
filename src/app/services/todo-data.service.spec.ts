@@ -13,4 +13,17 @@ describe('TodoDataService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should add todo', () => {
+    service.addTodo({
+      name: 'Test todo',
+      checked: false,
+    });
+
+    expect(service.getTodos()).toEqual([
+      { name: 'Do laundry', checked: false },
+      { name: 'Cook meal', checked: true },
+      { name: 'Test todo', checked: false },
+    ]);
+  });
 });
