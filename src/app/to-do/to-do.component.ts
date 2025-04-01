@@ -3,6 +3,7 @@ import { CheckboxUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
 import { ToDoItem } from './to-do.types';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { TodoDataService } from '../services/todo-data.service';
 
 @Component({
   selector: 'app-to-do',
@@ -14,27 +15,31 @@ export class ToDoComponent {
   todoForm = new FormGroup({
     newTodo: new FormControl('', [Validators.required, Validators.minLength(2)]),
   });
-  items: ToDoItem[] = [
-    { name: 'Do laundry', checked: false },
-    { name: 'Cook meal', checked: true },
-  ];
+  items: ToDoItem[] = [];
+
+  constructor(private todoDataService: TodoDataService) {
+  }
+
+  ngOnInit() {
+    this.getTodos();
+  }
+
+  getTodos() {
+    this.items = this.todoDataService.getTodos();
+  }
 
   addItem(item: ToDoItem) {
-    this.items.push(item);
+    this.todoDataService.addTodo(item);
   }
 
   checkItem(updateItem: ToDoItem) {
-    this.items = this.items.map(item => {
-      if (item.name === updateItem.name) {
-        item.checked = updateItem.checked;
-      }
-
-      return item;
-    });
+    this.todoDataService.checkTodo(updateItem);
   }
 
   deleteTodo(deleteItem: ToDoItem) {
-    this.items = this.items.filter(item => item.name !== deleteItem.name);
+    this.todoDataService.deleteTodo(deleteItem);
+
+    this.getTodos();
   }
 
   onUpdateCheckbox({ detail: updateItem }: CustomEvent<CheckboxUpdateEventDetail>) {
