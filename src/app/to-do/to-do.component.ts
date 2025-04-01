@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CheckboxUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { ToDoItem } from './to-do.types';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,7 +11,7 @@ import { TodoDataService } from '../services/todo-data.service';
   templateUrl: './to-do.component.html',
   styleUrl: './to-do.component.scss',
 })
-export class ToDoComponent {
+export class ToDoComponent implements OnInit {
   todoForm = new FormGroup({
     newTodo: new FormControl('', [Validators.required, Validators.minLength(2)]),
   });
