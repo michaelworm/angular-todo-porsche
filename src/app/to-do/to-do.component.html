@@ -1,6 +1,9 @@
-<section class="todo">
+<div class="header">
   <p-heading size="large">Homework ToDos</p-heading>
+  <p-link [compact]="true" icon="arrow-left" routerLink="/">Back to homepage</p-link>
+</div>
 
+<div class="todo">
   <form (ngSubmit)="onAddTodo()" [formGroup]="todoForm" class="add-todos">
     <p-text-field-wrapper label="New ToDo">
       <input formControlName="newTodo" required type="text" />
@@ -16,4 +19,4 @@
     </div>
     <p-divider />
   }
-</section>
+</div>

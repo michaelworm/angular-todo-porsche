@@ -1,8 +1,8 @@
-.content {
-  margin-top: 2rem;
-}
+@use '@porsche-design-system/components-angular/styles' as *;
 
 .stage {
   margin-top: 2rem;
-  max-width: 50%;
+  @include pds-media-query-min('s') {
+    max-width: 50%;
+  }
 }

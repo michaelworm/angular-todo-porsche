@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CheckboxUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { ToDoItem } from './to-do.types';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-to-do',
-  imports: [PorscheDesignSystemModule, ReactiveFormsModule],
+  imports: [PorscheDesignSystemModule, ReactiveFormsModule, RouterLink],
   templateUrl: './to-do.component.html',
   styleUrl: './to-do.component.scss',
 })
