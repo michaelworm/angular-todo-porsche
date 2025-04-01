@@ -12,7 +12,6 @@ import { RouterLink } from '@angular/router';
     RouterLink,
   ],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.scss',
 })
 export class TableComponent {
   public head = headBasic;

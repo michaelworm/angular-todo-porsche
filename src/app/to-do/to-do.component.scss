@@ -1,14 +1,3 @@
-@use '@porsche-design-system/components-angular/styles' as *;
-
-.header {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  @include pds-media-query-min('xs') {
-    justify-content: space-between;
-  }
-}
-
 .todo {
   display: flex;
   gap: 1rem;
