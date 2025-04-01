@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { ToDoComponent } from './to-do/to-do.component';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [ToDoComponent],
+  imports: [PorscheDesignSystemModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

@@ -1,17 +1,19 @@
 <section class="todo">
   <p-heading size="large">Homework ToDos</p-heading>
 
-  <div class="add-todos">
+  <form (ngSubmit)="onAddTodo()" [formGroup]="todoForm" class="add-todos">
     <p-text-field-wrapper label="New ToDo">
-      <input [formControl]="newTodo" type="text" />
+      <input formControlName="newTodo" required type="text" />
     </p-text-field-wrapper>
 
-    <p-button (click)="onAddTodo()" class="button">Add</p-button>
-  </div>
+    <p-button [disabled]="!todoForm.valid" class="button" type="submit">Add</p-button>
+  </form>
 
   @for (item of items; track $index) {
-    <p-checkbox [label]="item.name" [name]="item.name" [checked]="item.checked" (update)="onUpdateCheckbox($event)" />
-    <p-button [compact]="true" (click)="deleteTodo(item)">Delete</p-button>
+    <div class="todo-item">
+      <p-checkbox [label]="item.name" [name]="item.name" [checked]="item.checked" (update)="onUpdateCheckbox($event)" />
+      <p-button [compact]="true" (click)="deleteTodo(item)">Delete</p-button>
+    </div>
     <p-divider />
   }
 </section>

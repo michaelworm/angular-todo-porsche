@@ -2,7 +2,7 @@
 
 .grid {
   @include pds-grid();
-  .todo {
+  .content {
     grid-column: $pds-grid-basic-column-start / $pds-grid-basic-column-end;
   }
 }

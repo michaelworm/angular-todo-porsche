@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CheckboxUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { ToDoItem } from './to-do.types';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-to-do',
@@ -10,7 +10,9 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './to-do.component.scss',
 })
 export class ToDoComponent {
-  newTodo = new FormControl('');
+  todoForm = new FormGroup({
+    newTodo: new FormControl('', [Validators.required, Validators.minLength(2)]),
+  });
   items: ToDoItem[] = [
     { name: 'Do laundry', checked: false },
     { name: 'Cook meal', checked: true },
@@ -28,8 +30,6 @@ export class ToDoComponent {
 
       return item;
     });
-
-    console.log(this.items);
   }
 
   deleteTodo(deleteItem: ToDoItem) {
@@ -41,15 +41,17 @@ export class ToDoComponent {
   }
 
   onAddTodo() {
-    const value = this.newTodo.value;
+    const { newTodo } = this.todoForm.value;
 
-    if (value !== null && value !== '') {
+    if (this.todoForm.valid) {
       this.addItem({
-        name: value,
+        name: newTodo as string,
         checked: false,
       });
 
-      this.newTodo.setValue('');
+      this.todoForm.setValue({
+        newTodo: '',
+      });
     }
   }
 }
