@@ -1,14 +1,11 @@
 @use '@porsche-design-system/components-angular/styles' as *;
 
-.stage {
-  margin-top: 2rem;
+.header {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-}
-
-.link {
+  margin-bottom: 1rem;
   @include pds-media-query-min('xs') {
-    flex-basis: 300px;
+    justify-content: space-between;
   }
 }
